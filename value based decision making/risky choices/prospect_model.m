@@ -4,8 +4,8 @@
 % -c is the subject's choices,1 for certain choice, 2 for gamble choice
 % -cr is the value of certain choices
 % -ur is the value of uncertain choices, which includes two columns.The
-% first column is the bigger possibility and the second column is the
-% smaller possibility.
+% first column is the bigger possibility(0 or gain) and the second column is the
+% smaller possibility(loss or 0).
 % -ag is the utility function parameter of gain 
 % -al is the utility function parameter of loss
 % -lambda is the loss aversion parameter
@@ -19,9 +19,9 @@ u_gamble=0.5.*ur(:,1).^ag-0.5.*lambda.*(-ur(:,2)).^al;
 %calculate the certain choices' utility.
 for trial=1:trial_number
     if cr(trial)>=0
-        u_certain(trial)=cr.^ag;
+        u_certain(trial)=cr(trial).^ag;
     elseif cr(trial)<0
-        u_certain(trial)=-lambda.*(-cr).^al;
+        u_certain(trial)=-lambda.*-cr(trial).^al;
     end
 end
 %softmax choice kernel
