@@ -11,7 +11,7 @@ T=length(c);
 sv=r./(k.*t+1);
 proba=1./(1+exp(-beta.*sv));
 for trial=1:T
-    single_ll(trial)=proba(c(trial));
+    single_ll(trial)=proba(trial,c(trial));
 end
 ll=-sum(log(single_ll));
     
