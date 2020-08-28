@@ -1,4 +1,4 @@
-%% Prospect theory model in risky decision making model
+%% Prospect theory model in risky decision making task
 % From Rutledge, R. B., et al. (2015). "Dopaminergic Modulation of Decision Making and Subjective Well-Being." Journal of Neuroscience 35(27): 9811-9822.
 
 % -c is the subject's choices,1 for certain choice, 2 for gamble choice
