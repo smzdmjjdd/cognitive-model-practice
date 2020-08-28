@@ -12,6 +12,7 @@
 function ll=policy_gradient(c,fb,w0,eta,alpha,k)
 trial_number=length(c);
 
+%initilize policy parameter
 w=zeros(200,1);
 w(1)=w0;
 for trial=1:trial_number
@@ -37,7 +38,7 @@ end
 %calculate logliklihood
 p_sum=[p_left;p_right];
 for trial=1:trial_number
-    single_ll(trial)=p_sum(trial,c(trial));
+    single_ll(trial)=p_sum(c(trial),trial);
 end
 
 ll=-sum(log(single_ll));
