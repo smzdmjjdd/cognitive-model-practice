@@ -20,8 +20,8 @@ function ll=wmrl(trial_seq,c,fb,n,alpha,beta_rl,beta_wm,epsilon,rho,p,fai_wm,fai
 trial_number=length(c);
 
 %initilize q table for WM and RL module
-Q_RL=zeros(n,3); % the row represents different stimulus:[3 4 6], column represents different choices for different stimulus.
-Q_WM=zeros(n,3);
+Q_RL=ones(n,3)./3; % the row represents different stimulus:[3 4 6], column represents different choices for different stimulus.
+Q_WM=ones(n,3)./3;
 eta=1;           % learning rate for working memory module 
 weight_wm(1)=min(1,k/n)*rho;  % initial working memory weight
 
@@ -59,7 +59,7 @@ for trial=1:trial_number
     end
     
     %forget learnt action value
-    initial_q=zeros(n,3);
+    initial_q=ones(n,3)./3;
     Q_WM=Q_WM+fai_wm.*(Q_WM-initial_q);       %bigger action value would forget faster
     Q_RL=Q_RL+fai_wm.*fai_rl.*(Q_RL-initial_q);  %constrain RL module's forgetting speed smaller than WM module
 end
