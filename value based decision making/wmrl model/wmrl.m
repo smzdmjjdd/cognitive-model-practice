@@ -40,12 +40,14 @@ for trial=1:trial_number
     pe_wm(trial)=fb(trial)-Q_WM(trial_seq(trial),c(trial));
     
     %sign different learning rate for positive and negative predicition error
-    if pe_rl(trial)>0
+    if fb(trial)==1
         Q_RL(trial_seq(trial),c(trial))=Q_RL(trial_seq(trial),c(trial))+alpha*pe_rl(trial);
-    elseif pe_rl(trial)<0
+        Q_WM(trial_seq(trial),c(trial))=Q_WM(trial_seq(trial),c(trial))+eta*pe_wm(trial);
+    elseif fb(trial)==0
         Q_RL(trial_seq(trial),c(trial))=Q_RL(trial_seq(trial),c(trial))+(1-p)*alpha*pe_rl(trial);
+        Q_WM(trial_seq(trial),c(trial))=Q_WM(trial_seq(trial),c(trial))+(1-p)*eta*pe_wm(trial);
     end
-    Q_WM(trial_seq(trial),c(trial))=Q_WM(trial_seq(trial),c(trial))+eta*pe_wm(trial);
+    
     
     %using a bayesian model to update WM and RL modules' weight on correct trial
     if fb(trial)==1
