@@ -49,8 +49,8 @@ for trial=1:trial_number
     
     %using a bayesian model to update WM and RL modules' weight on correct trial
     if fb(trial)==1
-        marginal_wm(trial)=(weight_wm(trial)*pai_wm+(1-weight_wm(trial))*(1/n))*weight_wm;
-        marginal_rl(trial)=pai_rl(trial)*(1-weight_wm);
+        marginal_wm(trial)=(weight_wm(trial)*pai_wm+(1-weight_wm(trial))*(1/n))*weight_wm(trial);
+        marginal_rl(trial)=pai_rl(trial)*(1-weight_wm(trial));
         joint(trial)=marginal_rl(trial)+marginal_wm(trial);
         posterior(trial)=marginal_wm(trial)/joint(trial);
         weight_wm(trial+1)=posterior(trial);
