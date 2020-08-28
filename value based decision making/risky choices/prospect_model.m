@@ -31,7 +31,7 @@ proba_sum=[proba_certain;proba_gamble];
 
 %calculate likelihood per trial
 for trial=1:trial_number
-    single_ll(trial)=proba_sum(trial,c(trial));
+    single_ll(trial)=proba_sum(c(trial),trial);
 end
 
 ll=-sum(log(single_ll));
