@@ -56,7 +56,7 @@ for trial=1:trial_number
         joint(trial)=marginal_rl(trial)+marginal_wm(trial);
         posterior(trial)=marginal_wm(trial)/joint(trial);
         weight_wm(trial+1)=posterior(trial);
-    elseif
+    elseif fb(trial)==0
         weight_wm(trial+1)=weight_wm(trial);
     end
     
