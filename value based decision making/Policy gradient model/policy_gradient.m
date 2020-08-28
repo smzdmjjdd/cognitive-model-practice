@@ -19,7 +19,7 @@ for trial=1:trial_number
     p_left(trial)=1./(1+exp(-w(trial)));
     p_right(trial)=1-p_left(trial);
     
-    %calculate pe
+    %calculate gradient
     if c(trial)==1
         delta(trial)=fb(trial,1)-k*fb(trial,2);
     elseif c(trial)==2
