@@ -1,4 +1,4 @@
-%% Working memory Reinforcement learning model£¨WMRL)
+%% Working memory Reinforcement learning modelÂ£Â¨WMRL)
 %% From Collins, A. G. E. and M. J. Frank (2018). "Within- and across-trial dynamics of human EEG reveal cooperative interplay between reinforcement learning and working memory." Proc Natl Acad Sci U S A 115(10): 
 
 % -trial_seq stimulus that subject confront of.
@@ -9,7 +9,7 @@
 % -beta_rl inverse temperature parameter for RL module,fixed in 100.
 % -beta_wm inverse temperature parameter for WM module,fixed in 100.
 % -epsilon epsilon greedy parameter.
-% -rho parapmeter that represents the participant¡¯s overall reliance on WM over RL parameter space:[0,1]
+% -rho parapmeter that represents the participantÂ¡Â¯s overall reliance on WM over RL parameter space:[0,1]
 % -k subject's working memory capacity,parameter space:2 or 3 or 4 or 5.
 % -p perservation parameter for negative RL module prediction error,parameter space:[0,1].
 % -fai_wm decay parameter for working memory module, parameter space:[0,1].
@@ -54,6 +54,8 @@ for trial=1:trial_number
         joint(trial)=marginal_rl(trial)+marginal_wm(trial);
         posterior(trial)=marginal_wm(trial)/joint(trial);
         weight_wm(trial+1)=posterior(trial);
+    elseif
+        weight_wm(trial+1)=weight_wm(trial);
     end
     
     %forget learnt action value
