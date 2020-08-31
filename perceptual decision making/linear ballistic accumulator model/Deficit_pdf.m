@@ -9,4 +9,4 @@
 
 function ll=Deficit_pdf(t,v,sv,A,b)
 
-ll=pdf_lba(t,v,sv,A,b).*(1-cdf_lba(t,v,sv,A,b));
+ll=pdf_lba(t,v,sv,A,b).*(1-cdf_lba(t,1-v,sv,A,b));
