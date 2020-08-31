@@ -1,13 +1,13 @@
-%% Fehr¨CSchmidt inequity aversion model
+%% Fehr Schmidt inequity aversion model
 %% From Gao, X., et al. (2018). "Distinguishing neural correlates of context-dependent advantageous- and disadvantageous-inequity aversion." Proceedings of the National Academy of Sciences 115(33): E7680-E7689.
 
 % -c choice,1 for left, 2 for right.
 % -alpha aversion parameter under advantageous context
 % -beta aversion parameter under disadvantageous context
-% -ms self payoff, two columns
+% -ms self payoff, two columns(left and right choices,binary choice task)
 % -mo other payoff, two columns
 % -tau inverse temperature parameter
-% -ind indication parameter,two columns,1 for mo>ms, 2 for ms>mo
+% -ind indication parameter,two columns,1 for mo>ms, 2 for ms>mo, 0 for ms=mo
 
 
 function ll=F_S_inequity_model(c,alpha,beta,ms,mo,tau,ind)
