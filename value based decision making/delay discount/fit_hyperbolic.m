@@ -2,11 +2,11 @@
 
 function [LL,AIC,BIC]=fit_hyperbolic(c,r,t)
 
-obFunc = @(x) hyperbolicemodel(c, r, t, x(1), x(2));
+obFunc = @(x) hyperbolicemodel(c, r, t, x(1), x(2),x(3));
 
 X0 = [rand exprnd(1)];
-LB = [0 0];
-UB = [inf inf];
+LB = [0 0 0];
+UB = [1 inf 1];
 [Xfit, NegLL] = fmincon(obFunc, X0, [], [], [], [], LB, UB);
 
 LL = -NegLL;
